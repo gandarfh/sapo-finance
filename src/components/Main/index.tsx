@@ -1,7 +1,13 @@
+import styled from 'styled-components'
+
+const Test = styled.h1`
+  color: var(--primary-color);
+`
+
 const Main = () => {
   return (
     <main>
-      <h1>React Avançado</h1>
+      <Test>React Avançado</Test>
     </main>
   )
 }
