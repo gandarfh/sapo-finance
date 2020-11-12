@@ -1,5 +1,4 @@
 module.exports = function (plop) {
-  // controller generator
   plop.setGenerator('pages', {
     description: 'Gerador de estrutura de pages',
     prompts: [
