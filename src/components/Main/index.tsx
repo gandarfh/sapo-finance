@@ -4,10 +4,10 @@ const Test = styled.h1`
   color: var(--primary-color);
 `
 
-const Main = () => {
+const Main = ({ title = 'React Avançado' }) => {
   return (
     <main>
-      <Test>React Avançado</Test>
+      <Test>{title}</Test>
     </main>
   )
 }
