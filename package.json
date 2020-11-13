@@ -1,5 +1,5 @@
 {
-  "name": "client-frontend",
+  "name": "housi-corretores",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
     "build-storybook": "build-storybook -s ./public --no-dll",
     "generate:component": "plop --plopfile ./generators/templates/components/plopfile.js",
-    "generate:pages": "plop --plopfile ./generators/templates/pages/plopfile.js"
+    "generate:page": "plop --plopfile ./generators/templates/pages/plopfile.js"
   },
   "husky": {
     "hooks": {
