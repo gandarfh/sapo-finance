@@ -9,7 +9,8 @@
       "#contexts/*": ["./src/contexts/*"],
       "#hooks/*": ["./src/hooks/*"],
       "#utils/*": ["./src/utils/*"],
-      "#icons/*": ["./src/assets/icons/*"]
+      "#icons/*": ["./src/assets/icons/*"],
+      "#i18next": ["./src/components/translate/i18n.ts"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -25,6 +26,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]
 }

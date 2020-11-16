@@ -5,7 +5,7 @@ module.exports = function (plop) {
       {
         type: 'input',
         name: 'name',
-        message: 'Qual o nome da sua page:',
+        message: 'Digite o nome da nova Page:',
       },
     ],
     actions: [
@@ -28,6 +28,16 @@ module.exports = function (plop) {
         type: 'add',
         path: '../../../src/pages/{{dashCase name}}/test.tsx',
         templateFile: 'test.tsx.hbs',
+      },
+      {
+        type: 'add',
+        path: '../../../public/locales/pt-BR/{{dashCase name}}.json',
+        templateFile: 'pt-br.json.hbs',
+      },
+      {
+        type: 'add',
+        path: '../../../public/locales/en/{{dashCase name}}.json',
+        templateFile: 'en.json.hbs',
       },
     ],
   })

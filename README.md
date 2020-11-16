@@ -1,5 +1,3 @@
-# README
-
 <img src="https://housi-images.s3.amazonaws.com/site/logo/housi-logo-primary.svg" alt="Housi" width="220"/>
 
 ## Frontend Catalago dos Corretores
