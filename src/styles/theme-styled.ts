@@ -1,4 +1,13 @@
-export const theme = {
+interface themeProps {
+  breakpoints: {
+    sm: string
+    md: string
+    lg: string
+    xl: string
+  }
+}
+
+const theme: themeProps = {
   breakpoints: {
     sm: '576px',
     md: '768px',
@@ -6,3 +15,5 @@ export const theme = {
     xl: '1200px',
   },
 }
+
+export default theme

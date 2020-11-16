@@ -1,10 +1,11 @@
-import { AppProps } from 'next/app'
+import App, { AppProps, AppContext } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '#styles/global'
-import { theme } from '#styles/theme-styled'
+import theme from '#styles/theme-styled'
+import I18Next from '#i18next'
 
-function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -27,4 +28,9 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default App
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  return { ...appProps }
+}
+
+export default I18Next.appWithTranslation(MyApp)

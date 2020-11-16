@@ -8,4 +8,8 @@ return (
   )
 }
 
+Index.getInitialProps = async () => ({
+  namespacesRequired: ['{{dashCase name}}'],
+})
+
 export default {{pascalCase name}}
