@@ -1,10 +1,16 @@
-import { render, screen } from '@testing-library/react'
+import { mount } from 'enzyme'
 import { Home } from './index'
 
-describe('<Home />', () => {
-  it('should render the heading', () => {
-    render(<Home />)
+jest.mock('react-i18next', () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+it('title render translate', () => {
+  const mounted = mount(<Home />)
 
-    expect(screen.getByRole('heading', { name: /Home/i })).toBeInTheDocument()
-  })
+  expect(mounted.contains(<h1>home:teste</h1>)).toBe(true)
 })
