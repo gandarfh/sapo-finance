@@ -4,7 +4,7 @@
     "paths": {
       "#components/*": ["./src/components/*"],
       "#pages/*": ["./src/pages/*"],
-      "#styles/*": ["./src/styles/*"],
+      "#styles/*": ["./src/assets/styles/*"],
       "#requests/*": ["./src/requests/*"],
       "#contexts/*": ["./src/contexts/*"],
       "#hooks/*": ["./src/hooks/*"],

@@ -1,7 +1,7 @@
 // .storybook/preview.js
 
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../src/styles/theme-styled'
+import theme from '../src/styles/theme-styled'
 import GlobalStyles from '../src/styles/global'
 
 const withThemeProvider = (Story, context) => {

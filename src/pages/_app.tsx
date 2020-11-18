@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '#styles/global'
 import theme from '#styles/theme-styled'
 import I18Next from '#i18next'
+import { Navbar } from '#components/navbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,8 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="A simple project to work with typescript, React, NextJs and Styled Component"
         />
       </Head>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Navbar />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
