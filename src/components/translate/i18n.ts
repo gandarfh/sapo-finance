@@ -12,6 +12,7 @@ const NextI18NextInstance = new NextI18Next({
   defaultLanguage,
   otherLanguages,
   defaultNS: 'home',
+  debug: false,
   use: [initReactI18next],
   localePath: path.resolve('public/locales'),
 })

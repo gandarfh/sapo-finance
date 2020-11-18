@@ -8,8 +8,10 @@ export const Navbar = () => {
   return (
     <>
       <S.NavWrapper>
-        <LogoIcon color="primary" />
-        {t('home:teste')}
+        <S.NavContent>
+          <LogoIcon />
+          {t('home:teste')}
+        </S.NavContent>
       </S.NavWrapper>
     </>
   )
