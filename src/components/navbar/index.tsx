@@ -10,6 +10,7 @@ export const Navbar = () => {
       <S.NavWrapper>
         <S.NavContent>
           <LogoIcon />
+          <div style={{ color: '#fff' }}>home</div>
           {t('home:teste')}
         </S.NavContent>
       </S.NavWrapper>
