@@ -16,10 +16,31 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="application-name" content="Sapo Finance" />
+        <meta name="apple-mobile-web-app-title" content="Sapo Finance" />
         <meta
           name="description"
-          content="Sapo Finance your way to organize your finances"
+          content="Encontre sua maneira de gerenciar suas próprias finanças"
         />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/img/icon-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/img/icon-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/img/icon-192x192.png"
+        />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
