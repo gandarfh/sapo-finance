@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
-          content="A simple project to work with typescript, React, NextJs and Styled Component"
+          content="Sapo Finance your way to organize your finances"
         />
       </Head>
       <ThemeProvider theme={theme}>
