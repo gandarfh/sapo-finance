@@ -5,11 +5,11 @@ const GlobalStyles = createGlobalStyle`
     --white-color: #fff;
 
     --primary-color: #009444;
-    --primary-light-color: #B7FDD8;
+    --primary-light-color: #A0CEB6;
     --primary-dark-color: #064021;
 
     --secondary-color: #132328;
-    --secondary-light-color: #2E4B54;
+    --secondary-light-color: #66848d;
     --secondary-dark-color: #08180F;
 
     --black-color: #474747;

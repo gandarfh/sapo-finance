@@ -1,9 +1,50 @@
-import { Home } from '#components/home'
+import nookies from 'nookies'
+import { Column, Container, Row } from '#components/layout'
+import { verifyIdToken } from '#auth/firebase-admin'
+import { GetServerSidePropsContext } from 'next'
+import firebaseClient from '#auth/firebase-client'
+import firebase from 'firebase'
 
-const Index = () => <Home />
+interface InterfaceHome {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: firebase.User | any
+}
 
-Index.getInitialProps = async () => ({
-  namespacesRequired: ['home'],
-})
+const HomePage = ({ user }: InterfaceHome) => {
+  firebaseClient()
 
-export default Index
+  return (
+    <Container>
+      <Row topDesktop={32} topMobile={32}>
+        <Column>
+          <h2>{`Seja bem vindo ${user?.name}`}</h2>
+        </Column>
+        <Column topDesktop={12} topMobile={12}>
+          <h4>
+            {!user
+              ? `Cria uma conta primeiro porra`
+              : `mas que belo email\n ${user?.email}`}
+          </h4>
+        </Column>
+      </Row>
+    </Container>
+  )
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  try {
+    const cookies = nookies.get(context)
+    const { email, name } = await verifyIdToken(cookies.token)
+    return {
+      props: {
+        user: { email, name },
+      },
+    }
+  } catch (err) {
+    context.res.writeHead(302, { Location: '/login' })
+    context.res.end()
+    return { props: {} }
+  }
+}
+
+export default HomePage
