@@ -6,10 +6,11 @@
       "#pages/*": ["./src/pages/*"],
       "#styles/*": ["./src/assets/styles/*"],
       "#requests/*": ["./src/requests/*"],
-      "#contexts/*": ["./src/contexts/*"],
+      "#context/*": ["./src/context/*"],
       "#hooks/*": ["./src/hooks/*"],
       "#utils/*": ["./src/utils/*"],
       "#icons/*": ["./src/assets/icons/*"],
+      "#auth/*": ["./auth/*"],
       "#i18next": ["./src/components/translate/i18n.ts"]
     },
     "target": "es5",

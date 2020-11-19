@@ -1,10 +1,15 @@
-import App, { AppProps, AppContext } from 'next/app'
+import App, { AppProps } from 'next/app'
 import Head from 'next/head'
+import { Router } from 'next/router'
 import { ThemeProvider } from 'styled-components'
+import { AppContextType } from 'next/dist/next-server/lib/utils'
+
 import GlobalStyle from '#styles/global'
 import theme from '#styles/theme-styled'
 import I18Next from '#i18next'
 import { Navbar } from '#components/navbar'
+import { AuthProvider } from '#auth/auth'
+import { ProtectRoute } from '#context/protect-routes.context'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,7 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content="Encontre sua maneira de gerenciar suas próprias finanças"
         />
-
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -44,16 +48,32 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Navbar />
-        <Component {...pageProps} />
+        <AuthProvider>
+          <ProtectRoute>
+            {Component.displayName !== 'Login' &&
+            Component.displayName !== 'Register' ? (
+              <>
+                <Navbar />
+                <Component {...pageProps} />
+              </>
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </ProtectRoute>
+        </AuthProvider>
       </ThemeProvider>
     </>
   )
 }
 
-MyApp.getInitialProps = async (appContext: AppContext) => {
+MyApp.getInitialProps = async (appContext: AppContextType<Router>) => {
   const appProps = await App.getInitialProps(appContext)
-  return { ...appProps }
+
+  return {
+    pageProps: {
+      namespacesRequired: [...(appProps.pageProps.namespacesRequired || [])],
+    },
+  }
 }
 
 export default I18Next.appWithTranslation(MyApp)
