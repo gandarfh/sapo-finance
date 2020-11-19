@@ -21,16 +21,6 @@ module.exports = function (plop) {
       },
       {
         type: 'add',
-        path: '../../../src/pages/{{dashCase name}}/stories.tsx',
-        templateFile: 'stories.tsx.hbs',
-      },
-      {
-        type: 'add',
-        path: '../../../src/pages/{{dashCase name}}/test.tsx',
-        templateFile: 'test.tsx.hbs',
-      },
-      {
-        type: 'add',
         path: '../../../public/locales/pt-BR/{{dashCase name}}.json',
         templateFile: 'pt-br.json.hbs',
       },
