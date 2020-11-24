@@ -27,25 +27,27 @@ export const Navbar = () => {
               style={{ cursor: 'pointer' }}
               onClick={() => router.push('/')}
             />
-            <div style={{ color: '#fff' }}>home</div>
-            {t('home:teste')}
 
-            {user && (
-              <S.LogoutButton
-                onClick={async () => {
-                  firebase.auth().signOut()
-                  router.push('/login')
-                }}
-              >
-                <LogoutIcon
-                  color="primary"
-                  width="18px"
-                  height="16px"
-                  style={{ marginRight: '12px' }}
-                />
-                Logout
-              </S.LogoutButton>
-            )}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div>{t('nav:home')}</div>
+
+              {user && (
+                <S.LogoutButton
+                  onClick={async () => {
+                    firebase.auth().signOut()
+                    router.push('/login')
+                  }}
+                >
+                  <LogoutIcon
+                    color="primary"
+                    width="18px"
+                    height="16px"
+                    style={{ marginRight: '12px' }}
+                  />
+                  Logout
+                </S.LogoutButton>
+              )}
+            </div>
           </S.NavContent>
         </Container>
       </S.NavWrapper>
