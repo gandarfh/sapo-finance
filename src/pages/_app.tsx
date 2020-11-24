@@ -21,8 +21,15 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
         <link rel="manifest" href="/manifest.json" />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
         <meta name="application-name" content="Sapo Finance" />
         <meta name="apple-mobile-web-app-title" content="Sapo Finance" />
+        <meta name="theme-color" content="#009444" />
         <meta
           name="description"
           content="Encontre sua maneira de gerenciar suas próprias finanças"

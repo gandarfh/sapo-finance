@@ -16,23 +16,27 @@ const AuthContext = createContext({} as InterfaceUser)
 
 export const AuthProvider = ({ children }: InterfaceProvider) => {
   firebaseClient()
-  const [user, setUser] = useState<firebase.User | null>({} as firebase.User)
+  const [dataUser, setDataUser] = useState<firebase.User | null>(
+    {} as firebase.User
+  )
 
   useEffect(() => {
-    return firebase.auth().onIdTokenChanged(async (user) => {
-      if (!user) {
-        setUser(null)
+    firebase.auth().onIdTokenChanged(async (user) => {
+      if (user === null) {
+        setDataUser(null)
         nookies.set(undefined, 'token', '', {})
         return
       }
       const token = await user.getIdToken()
-      setUser(user as firebase.User)
+      setDataUser(user as firebase.User)
       nookies.set(undefined, 'token', token, {})
     })
-  }, [])
+  }, [dataUser])
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user: dataUser }}>
+      {children}
+    </AuthContext.Provider>
   )
 }
 
