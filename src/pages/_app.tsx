@@ -1,17 +1,33 @@
 import App, { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Router } from 'next/router'
+import { Router, useRouter } from 'next/router'
 import { ThemeProvider } from 'styled-components'
 import { AppContextType } from 'next/dist/next-server/lib/utils'
+import nookies from 'nookies'
 
 import GlobalStyle from '#styles/global'
 import theme from '#styles/theme-styled'
 import I18Next from '#i18next'
 import { Navbar } from '#components/navbar'
 import { AuthProvider } from '#auth/auth'
-import { ProtectRoute } from '#context/protect-routes.context'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const validToken = () => {
+    if (pageProps.isAuth) {
+      return
+    }
+    return router.push('/login')
+  }
+
+  useEffect(() => {
+    validToken()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageProps.isAuth])
+
   return (
     <>
       <Head>
@@ -56,17 +72,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <AuthProvider>
-          <ProtectRoute>
-            {Component.displayName !== 'Login' &&
-            Component.displayName !== 'Register' ? (
-              <>
-                <Navbar />
-                <Component {...pageProps} />
-              </>
-            ) : (
+          {Component.displayName !== 'Login' &&
+          Component.displayName !== 'Register' ? (
+            <>
+              <Navbar />
               <Component {...pageProps} />
-            )}
-          </ProtectRoute>
+            </>
+          ) : (
+            <Component {...pageProps} />
+          )}
         </AuthProvider>
       </ThemeProvider>
     </>
@@ -75,9 +89,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 MyApp.getInitialProps = async (appContext: AppContextType<Router>) => {
   const appProps = await App.getInitialProps(appContext)
+  const cookies = nookies.get(appContext.ctx)
 
   return {
     pageProps: {
+      isAuth: !!cookies.token,
       namespacesRequired: [...(appProps.pageProps.namespacesRequired || [])],
     },
   }
