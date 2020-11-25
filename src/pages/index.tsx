@@ -12,7 +12,6 @@ interface InterfaceHome {
 
 const HomePage = ({ user }: InterfaceHome) => {
   firebaseClient()
-
   return (
     <Container>
       <Row topDesktop={32} topMobile={32}>
@@ -41,8 +40,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     }
   } catch (err) {
-    context.res.writeHead(302, { Location: '/login' })
-    context.res.end()
     return { props: {} }
   }
 }
