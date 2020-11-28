@@ -1,6 +1,8 @@
-// .storybook/main.js
-
 module.exports = {
-  stories: ['../**/stories.tsx'],
+  stories: ['../src/components/**/stories.tsx', '../src/components/**/stories.mdx'],
   addons: ['@storybook/addon-essentials'],
+  webpackFinal: (config) => {
+    config.resolve.modules.push(`${process.cwd()}/src`)
+    return config
+  }
 }

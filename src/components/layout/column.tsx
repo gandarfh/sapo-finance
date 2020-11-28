@@ -1,20 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
 
+type directType = 'column' | 'row'
+type alignType = 'flex-start' | 'flex-end' | 'center'
+type justifyType =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+type wrapType = 'wrap' | 'nowrap'
+
 interface InterfaceColumn {
-  children: React.ReactNode
-  directionMobile?: string
-  directionDesktop?: string
-  alignMobile?: string
-  alignDesktop?: string
-  alignSelfDesktop?: string
-  alignSelfMobile?: string
-  justifyMobile?: string
-  justifyDesktop?: string
-  justifySelfMobile?: string
-  justifySelfDesktop?: string
-  wrapMobile?: string
-  wrapDesktop?: string
+  children: React.ReactNode | React.ReactNodeArray
+  directionMobile?: directType
+  directionDesktop?: directType
+  alignMobile?: alignType
+  alignDesktop?: alignType
+  alignSelfDesktop?: alignType
+  alignSelfMobile?: alignType
+  justifyMobile?: justifyType
+  justifyDesktop?: justifyType
+  justifySelfMobile?: justifyType
+  justifySelfDesktop?: justifyType
+  wrapMobile?: wrapType
+  wrapDesktop?: wrapType
   topMobile?: number
   topDesktop?: number
   heightMobile?: string

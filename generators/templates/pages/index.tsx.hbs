@@ -1,15 +1,18 @@
+import { useTranslation } from 'react-i18next'
+
 import * as S from './styled'
 
 const {{pascalCase name}} = () => {
-return (
-    <>
-      <h1>{{pascalCase name}}</h1>
-    </>
-  )
-}
+  const { t } = useTranslation('home')
 
-{{pascalCase name}}.getInitialProps = async () => ({
-  namespacesRequired: ['{{dashCase name}}'],
-})
+  return (
+      <>
+        <S.Heading>{t('{{dashCase name}}:TITLE')}</S.Heading>
+      </>
+    )
+  }
+
+
+{{pascalCase name}}.displayName = '{{pascalCase name}}'
 
 export default {{pascalCase name}}

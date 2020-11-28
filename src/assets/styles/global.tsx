@@ -2,25 +2,28 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --white-color: #fff;
+    --primary-light-2-color: #FF6F95;
+    --primary-light-1-color: #FB5984;
+    --primary-color: #fa3c6e;
+    --primary-dark-1-color: #E32557;
+    --primary-dark-2-color: #CF1143;
 
-    --primary-color: #009444;
-    --primary-light-color: #A0CEB6;
-    --primary-dark-color: #064021;
+    --secondary-light-2-color: #4E4E78;
+    --secondary-light-1-color: #2B2B65;
+    --secondary-color: #000050;
+    --secondary-dark-1-color: #000044;
+    --secondary-dark-2-color: #00003A;
 
-    --secondary-color: #132328;
-    --secondary-light-color: #66848d;
-    --secondary-dark-color: #08180F;
-
+    --gray-2-color: #A4A4A4;
+    --gray-color: #7E7E7E;
     --black-color: #474747;
-    --black-light-color: #A4A4A4;
-    --black-dark-color: #242424;
+    --black-1-color: #333333;
+    --black-2-color: #242424;
 
-    --gray-color: #D0D0D0;
-    --gray-light-color: #F5F5F5;
-
-    --sucess-color: #06E775;
-    --error-color: #F03D3D;
+    --white-color: #FFFFFF;
+    --success-color: #28C48C;
+    --danger-color: #EB5757;
+    --info-color: #F2994A;
   }
   * {
     box-sizing: border-box;

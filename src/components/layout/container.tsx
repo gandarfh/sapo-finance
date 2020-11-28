@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface InterfaceContainer {
-  children: React.ReactNode
+  children: React.ReactNode | React.ReactNodeArray
   topMobile?: number
   topDesktop?: number
   bottomMobile?: number
@@ -14,8 +14,8 @@ const ContainerStyle = styled.main<InterfaceContainer>`
   margin-left: auto;
   margin-right: auto;
   margin-top: ${(props) => props.topMobile}px;
-  max-width: calc(100% - 16px);
-  min-width: calc(100% - 16px);
+  max-width: calc(100% - 32px);
+  min-width: calc(100% - 32px);
   position: relative;
 
   @media (min-width: ${(props) => props.theme.breakpoints.md}) {

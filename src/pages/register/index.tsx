@@ -118,8 +118,4 @@ const Register = () => {
 
 Register.displayName = 'Register'
 
-Register.getInitialProps = async () => ({
-  namespacesRequired: ['home'],
-})
-
 export default Register
