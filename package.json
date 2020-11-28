@@ -7,12 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --max-warnings=0 --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "storybook": "start-storybook -s ./public -p 6006 --no-dll",
-    "build-storybook": "build-storybook -s ./public --no-dll",
-    "generate:component": "plop --plopfile ./generators/templates/components/plopfile.js",
-    "generate:page": "plop --plopfile ./generators/templates/pages/plopfile.js"
+    "storybook": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -s ./public",
+    "generate:component": "plop --plopfile ./generators/components.plopfile.js",
+    "generate:page": "plop --plopfile ./generators/pages.plopfile.js"
   },
   "husky": {
     "hooks": {
@@ -21,17 +19,13 @@
   },
   "lint-staged": {
     "src/**/*": [
-      "npm run lint",
-      "jest --findRelatedTests --bail"
+      "npm run lint"
     ]
   },
   "dependencies": {
-    "firebase": "^8.0.2",
-    "firebase-admin": "^9.4.1",
     "next": "10.0.3",
     "next-i18next": "^7.0.1",
     "next-pwa": "^3.1.5",
-    "nookies": "^2.5.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-i18next": "^11.7.3",
@@ -40,12 +34,10 @@
   "devDependencies": {
     "@babel/core": "^7.12.8",
     "@babel/preset-typescript": "^7.12.7",
-    "@storybook/addon-essentials": "^6.1.2",
-    "@storybook/react": "^6.0.28",
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@types/cookies": "^0.7.5",
-    "@types/enzyme": "^3.10.8",
+    "@storybook/addon-actions": "^6.1.6",
+    "@storybook/addon-essentials": "^6.1.6",
+    "@storybook/addon-links": "^6.1.6",
+    "@storybook/react": "^6.1.6",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.6",
     "@types/react": "^17.0.0",
@@ -55,8 +47,6 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.3.1",
     "babel-loader": "^8.2.1",
     "babel-plugin-styled-components": "^1.11.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-better-styled-components": "^1.1.2",
@@ -69,7 +59,6 @@
     "lint-staged": "^10.5.1",
     "plop": "^2.7.4",
     "prettier": "^2.1.2",
-    "react-is": "^17.0.1",
     "typescript": "^4.0.5"
   }
 }

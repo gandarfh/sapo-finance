@@ -1,7 +1,7 @@
 import { Column, Container, Row } from '#components/layout'
 import { LogoIcon } from '#icons/nav/logo.icon'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import * as S from './styled'
 
 import firebase from 'firebase/app'
@@ -18,6 +18,30 @@ const Login = () => {
   })
 
   const [loading, setLoading] = useState(false)
+
+  const handleSignIn = async (e: FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    await firebase
+      .auth()
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then(async () => {
+        router.push('/')
+      })
+      .catch((err) => {
+        switch (err.code) {
+          case 'auth/user-not-found':
+            alert('Usuário não existe')
+            break
+
+          default:
+            alert(err)
+        }
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
 
   return (
     <>
@@ -37,7 +61,8 @@ const Login = () => {
               width="100"
               style={{ marginBottom: '32px' }}
             />
-            <div
+            <form
+              onSubmit={handleSignIn}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -63,28 +88,6 @@ const Login = () => {
                 <S.Button
                   disabled={user.email === '' || user.password === ''}
                   type="submit"
-                  onClick={async () => {
-                    setLoading(true)
-                    await firebase
-                      .auth()
-                      .signInWithEmailAndPassword(user.email, user.password)
-                      .then(async () => {
-                        router.push('/')
-                      })
-                      .catch((err) => {
-                        switch (err.code) {
-                          case 'auth/user-not-found':
-                            alert('Usuário não existe')
-                            break
-
-                          default:
-                            alert(err)
-                        }
-                      })
-                      .finally(() => {
-                        setLoading(false)
-                      })
-                  }}
                 >
                   {loading ? 'conectando...' : 'Conectar'}
                 </S.Button>
@@ -96,7 +99,7 @@ const Login = () => {
                   criar uma conta
                 </S.ButtonRegister>
               </div>
-            </div>
+            </form>
           </Column>
         </Row>
       </Container>
@@ -105,9 +108,5 @@ const Login = () => {
 }
 
 Login.displayName = 'Login'
-
-Login.getInitialProps = async () => ({
-  namespacesRequired: ['home'],
-})
 
 export default Login

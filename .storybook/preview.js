@@ -1,10 +1,10 @@
 // .storybook/preview.js
 
 import { ThemeProvider } from 'styled-components'
-import theme from '../src/styles/theme-styled'
-import GlobalStyles from '../src/styles/global'
+import theme from '../src/assets/styles/theme-styled'
+import GlobalStyles from '../src/assets/styles/global'
 
-const withThemeProvider = (Story, context) => {
+const withThemeProvider=(Story,context)=>{
   return (
     <ThemeProvider theme={theme}>
       <Story {...context} />
@@ -12,4 +12,4 @@ const withThemeProvider = (Story, context) => {
     </ThemeProvider>
   )
 }
-export const decorators = [withThemeProvider]
+export const decorators = [withThemeProvider];
