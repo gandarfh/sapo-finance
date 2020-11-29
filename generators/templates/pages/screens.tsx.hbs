@@ -1,0 +1,28 @@
+import { useTranslation } from 'react-i18next'
+import { Column, Container, Row } from '@components/layout'
+
+import * as S from './styled'
+
+const {{pascalCase name}} = () => {
+  const { t } = useTranslation('{{dashCase name}}')
+  return (
+    <>
+      <Container>
+        <Row>
+          <Column
+            heightDesktop="100vh"
+            heightMobile="100vh"
+            alignDesktop="center"
+            alignMobile="center"
+            justifyDesktop="center"
+            justifyMobile="center"
+          >
+            <S.Heading>{t('{{dashCase name}}:TITLE')}</S.Heading>
+          </Column>
+        </Row>
+      </Container>
+    </>
+  )
+}
+
+export default {{pascalCase name}}
