@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -25,16 +25,27 @@ const GlobalStyles = createGlobalStyle`
     --danger-color: #EB5757;
     --info-color: #F2994A;
   }
-  * {
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: var(--black-color);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  *, body, input, textarea, button {
-    font-family: 'Montserrat', sans-serif;
-  }
+  ${({ theme }) => css`
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      font-family: ${theme.font.family};
+      font-size: ${theme.font.sizes.medium};
+    }
+  `}
 `
 
 export default GlobalStyles

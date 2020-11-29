@@ -1,7 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, RefObject } from 'react'
+import { AnyStyledComponent } from 'styled-components'
 
-export function useOutsideClick(ref, callback) {
-  function handleClickOutside(event) {
+export const useOutsideClick = (
+  ref: RefObject<AnyStyledComponent>,
+  callback: () => void
+) => {
+  const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target)) {
       callback()
     }
